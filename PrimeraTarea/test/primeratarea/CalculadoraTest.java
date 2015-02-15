@@ -18,21 +18,21 @@ public class CalculadoraTest {
     @Test
     public void agregarRetornaCeroCuandoLaEntradaEsVacia() {
 
-        String resultado = Calculadora.agregar("");
+        int resultado = Calculadora.agregar("");
         assertEquals(0, resultado);
     }
 
     @Test
     public void agregarRetornaCeroCuandoLaEntradaEsNula() {
 
-        String resultado = Calculadora.agregar(null);
+        int resultado = Calculadora.agregar(null);
         assertEquals(0, resultado);
     }
 
     @Test
     public void agregarRetornaNumeroCuandoLaEntradaEsSimpleNumeroEnString() {
 
-        String resultado = Calculadora.agregar("0");
+        int resultado = Calculadora.agregar("0");
         assertEquals(0, resultado);
         resultado = Calculadora.agregar("1");
         assertEquals(1, resultado);
@@ -45,13 +45,13 @@ public class CalculadoraTest {
     @Test
     public void agregarRetornaNumeroCuandoLaEntradaSonVariosNumerosEnString() {
 
-        String resultado = Calculadora.agregar("0,1,2,3,4,555");
+        int resultado = Calculadora.agregar("0,1,2,3,4,555");
         assertEquals(565, resultado);
     }
 
     @Test
     public void agregarRetornaSumaCuandoLaEntradaEsMultiplesNumerosEnStringConNuevaLineaComoDelimitador() {
-        String resultado = Calculadora.agregar("1,2,3");
+        int resultado = Calculadora.agregar("1,2,3");
         assertEquals(6, resultado);
         resultado = Calculadora.agregar("3\n2");
         assertEquals(5, resultado);
@@ -63,7 +63,7 @@ public class CalculadoraTest {
 
     @Test
     public void agregarRetornaSumaCuandoLaEntradaEsMultipleNumerosEnString() {
-        String resultado = Calculadora.agregar("0,3,3");
+        int resultado = Calculadora.agregar("0,3,3");
         assertEquals(6, resultado);
         resultado = Calculadora.agregar("0,2,2");
         assertEquals(4, resultado);
@@ -71,7 +71,7 @@ public class CalculadoraTest {
 
     @Test
     public void agregarRetornaSumaIgnorandoCantidadesMayoresAMil() {
-        String resultado = Calculadora.agregar("0,3,1001");
+        int resultado = Calculadora.agregar("0,3,1001");
         assertEquals(3, resultado);
         resultado = Calculadora.agregar("0,3,1000");
         assertEquals(1003, resultado);
@@ -80,7 +80,7 @@ public class CalculadoraTest {
      
     @Test
     public void agregarCuandoLaEntradaDefineDelimitadorYSeUsaDelimitador(){
-                String resultado = Calculadora.agregar("//*\n1*2");
+                int resultado = Calculadora.agregar("//*\n1*2");
         assertEquals(3, resultado);
         resultado = Calculadora.agregar("//;\n1;2");
         assertEquals(3, resultado);
@@ -93,7 +93,7 @@ public class CalculadoraTest {
     public void agregarArrojaArgumentExceptionCuandoLaEntradaStringNoSigueLasReglas(){
         
         try {
-            String resultado = Calculadora.agregar("1,-1");
+            int resultado = Calculadora.agregar("1,-1");
             fail("expected IllegalArgumentException for agregar");
         } catch (IllegalArgumentException ex) {
             assertThat(ex.getMessage(), 
